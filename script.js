@@ -9,7 +9,7 @@ var numericalChar = "0123456789"
 var specialChar = "!@#$%^&*{}[]\|:;.~+=-_"
 var lowercaseArray = lowerstring.split("")
 console.log(lowercaseArray)
-
+//event listener to generate function
 function generatePassword() {
 
   var passwordLength =Number ( window.prompt("enter desired password length"))
@@ -20,6 +20,7 @@ function generatePassword() {
 
 
   }
+  //character choice of one true
   var acceptLower = window.confirm("would you like lowercase letters?");
   var acceptUpper = window.confirm("would you like uppercase letters?");
   var acceptNumbers = window.confirm("would you like numbers?");
@@ -28,6 +29,7 @@ function generatePassword() {
     alert("please select atleast one character type");
     return "please try again"
   }
+  // helps with available characters based on input
   var totalstring= ""
 if(acceptLower){
   totalstring=totalstring.concat(lowerstring)
