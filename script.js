@@ -1,25 +1,59 @@
 // Assignment code here
-// create arrays for lowercase uppercase numbers and special
-var lowerstring="abcdefghijklmnopqrstuvwxyz"
-var uppercaseChar="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var numericalChar="0123456789"
-var specialChar="!@#$%^&*{}[]\|:;.~+=-_"
-var lowercaseArray= lowerstring.split("")
-console.log(lowercaseArray)
-function generatePassword (){
-  var passLength=window.prompt("enter desired password length");
-  console.log(passLength)
-  var acceptLower=window.confirm("would you like lowercase letters?");
-  var acceptUpper=window.confirm("would you like uppercase letters?");
-var acceptNumbers=window.confirm("would you like numbers?");
-var acceptSpecialcharacters=window.confirm("would you like special characters?")
-if (passwordLengthUser >128) {
-  alert("Password must not have more than 128 characters");
-  return""
 
+
+
+// create arrays for lowercase uppercase numbers and special
+var lowerstring = "abcdefghijklmnopqrstuvwxyz"
+var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var numericalChar = "0123456789"
+var specialChar = "!@#$%^&*{}[]\|:;.~+=-_"
+var lowercaseArray = lowerstring.split("")
+console.log(lowercaseArray)
+
+function generatePassword() {
+
+  var passwordLength =Number ( window.prompt("enter desired password length"))
+  console.log(passwordLength)
+  if (passwordLength > 128 || passwordLength < 8||isNaN(passwordLength)) {
+    alert("Password must have a valid number between 8-128");
+    return "please try again"
+
+
+  }
+  var acceptLower = window.confirm("would you like lowercase letters?");
+  var acceptUpper = window.confirm("would you like uppercase letters?");
+  var acceptNumbers = window.confirm("would you like numbers?");
+  var acceptSpecialcharacters = window.confirm("would you like special characters?");
+  if (!acceptLower&&!acceptUpper&&!acceptNumbers&&!acceptSpecialcharacters){
+    alert("please select atleast one character type");
+    return "please try again"
+  }
+  var totalstring= ""
+if(acceptLower){
+  totalstring=totalstring.concat(lowerstring)
 }
-console.group(acceptLower,acceptNumbers,acceptUpper,acceptSpecialcharacters)
-  return ""
+if(acceptUpper){
+  totalstring=totalstring.concat(uppercaseChar)
+}
+if(acceptNumbers){
+  totalstring=totalstring.concat(numericalChar)
+}
+if(acceptSpecialcharacters){
+  totalstring=totalstring.concat(specialChar)
+}
+var totalarray=totalstring.split("")
+console.log(totalarray)
+var passwordstring=""
+for(var i=0;i <passwordLength;i++){
+  var index=Math.floor(Math.random()*totalarray.length)
+  console.log (index)
+   passwordstring += totalarray[index]
+}
+return passwordstring
+
+
+
+
 }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
